@@ -1,0 +1,31 @@
+#access key and secret key are stored in defualt profile(aws configure)
+#deleting the resources created in create_resources.yml file
+- hosts: localhost
+  vars_files:
+    - create_resources.yml
+  tasks:
+    - name: delete free trail s3 bucket
+      s3_bucket:
+        name: verint-test
+        state: absent
+        force: yes
+
+    - name: Create Free tier AWS RDS Postgres 
+      local_action:
+        module: rds
+        command: delete
+        instance_name: verint-test-rds-pg-1
+
+   
+        
+       
+            
+
+
+ 
+
+
+    
+
+
+
